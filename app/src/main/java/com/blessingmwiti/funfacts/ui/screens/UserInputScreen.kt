@@ -11,7 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.blessingmwiti.funfacts.data.UserDataUiEvents
 import com.blessingmwiti.funfacts.ui.TextComponent
+import com.blessingmwiti.funfacts.ui.TextFieldComponent
 import com.blessingmwiti.funfacts.ui.TopBar
 import com.blessingmwiti.funfacts.ui.UserInputViewModel
 
@@ -32,11 +34,17 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
             Spacer(modifier = Modifier.size(20.dp))
 
             TextComponent(
-                textValue = "This app will prepare a details page based on details provided by you",
+                textValue = "This app will prepare a details page based on info provided by you",
                 testSize = 18.sp
             )
 
             Spacer(modifier = Modifier.size(60.dp))
+
+            TextFieldComponent(onTextChanged = {
+                userInputViewModel.onEvent(
+                    UserDataUiEvents.UserNameEntered(it)
+                )
+            } )
         }
 
     }
@@ -45,5 +53,5 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
 @Preview
 @Composable
 fun UserInputScreenPreview() {
-    UserInputScreen(userInputViewModel)
+    UserInputScreen(UserInputViewModel())
 }

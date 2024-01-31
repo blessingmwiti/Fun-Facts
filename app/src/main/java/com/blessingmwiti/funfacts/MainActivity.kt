@@ -10,6 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.blessingmwiti.funfacts.ui.screens.FunFactsNavigationGraph
 import com.blessingmwiti.funfacts.ui.theme.FunFactsTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +21,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             FunFactsTheme {
+                FunFactsTheme {
+                    FunFactsApp()
+                }
             }
         }
+    }
+
+    @Composable
+    fun FunFactsApp() {
+        FunFactsNavigationGraph()
     }
 }

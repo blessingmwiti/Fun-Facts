@@ -84,15 +84,23 @@ fun TextComponentPreview() {
 fun TextFieldComponent(
     onTextChanged : (name:String) -> Unit
 ) {
+    val localFocusManager = LocalFocusManager.current
     var currentValue by remember { mutableStateOf("") }
     OutlinedTextField(
+        keyboardOptions = KeyboardOptions(
+            imeAction = ImeAction.Done
+        ),
+        keyboardActions = KeyboardActions{
+                                         localFocusManager.clearFocus()
+        },
         modifier = Modifier.fillMaxWidth(),
         value = currentValue , onValueChange = {
             currentValue = it
             onTextChanged(it)
         },
         placeholder = { Text(text = "Enter your name", fontSize = 18.sp) },
-        textStyle = TextStyle.Default.copy(fontSize = 24.sp))
+        textStyle = TextStyle.Default.copy(fontSize = 24.sp)
+    )
 }
 
 @Composable
@@ -101,6 +109,8 @@ fun AnimalCard(
     selected: Boolean,
     animalSelected: (animalName:String) -> Unit
 ) {
+
+    val localFocusManager = LocalFocusManager.current
     Card(
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
@@ -130,6 +140,7 @@ fun AnimalCard(
                     .clickable {
                         val animalName = if (image == R.drawable.catto) "Cat" else "Dog"
                         animalSelected(animalName)
+                        localFocusManager.clearFocus()
                     }
             )
         }

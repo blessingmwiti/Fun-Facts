@@ -77,11 +77,17 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
             
             Spacer(modifier = Modifier.weight(1F))
 
-            ButtonComponent (
-                gotToDetailsScreen = {
+            if(userInputViewModel.uiState.value.nameEntered.isNotEmpty()
+                &&
+                userInputViewModel.uiState.value.animalSelected.isNotEmpty()
+            ){
+                ButtonComponent (
+                    gotToDetailsScreen = {
 
-                }
-            )
+                    }
+                )
+            }
+
         }
 
     }

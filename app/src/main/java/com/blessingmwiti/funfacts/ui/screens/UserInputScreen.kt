@@ -61,8 +61,8 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
             Row (
                 modifier = Modifier.fillMaxWidth()
             ) {
-                AnimalCard(image = R.drawable.catto)
-                AnimalCard(image = R.drawable.doggo)
+                AnimalCard(image = R.drawable.catto, false)
+                AnimalCard(image = R.drawable.doggo, true)
             }
         }
 

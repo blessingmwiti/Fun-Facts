@@ -2,6 +2,7 @@ package com.blessingmwiti.funfacts.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -37,6 +38,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.blessingmwiti.funfacts.R
+import com.blessingmwiti.funfacts.data.UserDataUiEvents
 
 @Composable
 fun TopBar (value: String) {
@@ -93,7 +95,11 @@ fun TextFieldComponent(
 }
 
 @Composable
-fun AnimalCard(image:Int, selected: Boolean) {
+fun AnimalCard(
+    image:Int,
+    selected: Boolean,
+    animalSelected: (animalName:String) -> Unit
+) {
     Card(
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
@@ -119,14 +125,18 @@ fun AnimalCard(image:Int, selected: Boolean) {
                     )
                     .wrapContentHeight()
                     .wrapContentWidth()
+                    .clickable {
+                        val animalName = if (image == R.drawable.catto) "Cat" else "Dog"
+                        animalSelected(animalName)
+                    }
             )
         }
 
     }
 }
 
-@Preview
-@Composable
-fun AnimalCardPreview() {
-    AnimalCard(R.drawable.doggo, false)
-}
+//@Preview
+//@Composable
+//fun AnimalCardPreview() {
+//    AnimalCard(R.drawable.doggo, false)
+//}

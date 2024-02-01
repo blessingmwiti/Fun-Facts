@@ -1,8 +1,10 @@
 package com.blessingmwiti.funfacts.ui.screens
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Surface
@@ -11,7 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.blessingmwiti.funfacts.R
 import com.blessingmwiti.funfacts.data.UserDataUiEvents
+import com.blessingmwiti.funfacts.ui.AnimalCard
 import com.blessingmwiti.funfacts.ui.TextComponent
 import com.blessingmwiti.funfacts.ui.TextFieldComponent
 import com.blessingmwiti.funfacts.ui.TopBar
@@ -40,11 +44,26 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
 
             Spacer(modifier = Modifier.size(60.dp))
 
+            TextComponent(textValue = "Name", testSize = 18.sp)
+
+            Spacer(modifier = Modifier.size(10.dp))
+
             TextFieldComponent(onTextChanged = {
                 userInputViewModel.onEvent(
                     UserDataUiEvents.UserNameEntered(it)
                 )
             } )
+
+            Spacer(modifier = Modifier.size(20.dp))
+
+            TextComponent(textValue = "What do you like?", testSize = 18.sp)
+
+            Row (
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                AnimalCard(image = R.drawable.catto)
+                AnimalCard(image = R.drawable.doggo)
+            }
         }
 
     }

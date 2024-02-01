@@ -83,7 +83,8 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
             ){
                 ButtonComponent (
                     gotToDetailsScreen = {
-
+                        println("========ComingHere")
+                        println("========${userInputViewModel.uiState.value.nameEntered} and ${userInputViewModel.uiState.value.animalSelected}")
                     }
                 )
             }

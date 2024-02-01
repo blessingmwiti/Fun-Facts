@@ -160,7 +160,7 @@ fun ButtonComponent(
 ) {
     Button(
         modifier = Modifier.fillMaxWidth(),
-        onClick = { /*TODO*/ }
+        onClick = { gotToDetailsScreen() }
     ) {
         TextComponent(
             textValue = "Go to Details Screen",

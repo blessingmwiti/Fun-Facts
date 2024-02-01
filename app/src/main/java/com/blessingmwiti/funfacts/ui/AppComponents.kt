@@ -73,7 +73,8 @@ fun TextFieldComponent(
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         value = currentValue , onValueChange = {
-                                               onTextChanged(it)
+                                               currentValue = it
+            onTextChanged(it)
         },
         placeholder = { Text(text = "Enter your name", fontSize = 18.sp) },
         textStyle = TextStyle.Default.copy(fontSize = 24.sp))

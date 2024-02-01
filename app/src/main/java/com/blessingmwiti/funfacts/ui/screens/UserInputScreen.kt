@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.sp
 import com.blessingmwiti.funfacts.R
 import com.blessingmwiti.funfacts.data.UserDataUiEvents
 import com.blessingmwiti.funfacts.ui.AnimalCard
+import com.blessingmwiti.funfacts.ui.ButtonComponent
 import com.blessingmwiti.funfacts.ui.TextComponent
 import com.blessingmwiti.funfacts.ui.TextFieldComponent
 import com.blessingmwiti.funfacts.ui.TopBar
@@ -60,7 +61,7 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
 
             Row (
                 modifier = Modifier.fillMaxWidth()
-            ) {
+                ) {
                 AnimalCard(image = R.drawable.catto, animalSelected = {
                     userInputViewModel.onEvent(
                         UserDataUiEvents.AnimalSelected(it)
@@ -70,8 +71,17 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
                     userInputViewModel.onEvent(
                         UserDataUiEvents.AnimalSelected(it)
                     )
-                }, selected = userInputViewModel.uiState.value.animalSelected=="Dog")
+                }, selected = userInputViewModel.uiState.value.animalSelected=="Dog"
+                )
             }
+            
+            Spacer(modifier = Modifier.weight(1F))
+
+            ButtonComponent (
+                gotToDetailsScreen = {
+
+                }
+            )
         }
 
     }

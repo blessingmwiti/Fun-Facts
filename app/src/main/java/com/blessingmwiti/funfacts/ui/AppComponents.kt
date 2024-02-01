@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -108,7 +109,8 @@ fun AnimalCard(
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Box (
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .border(
                     width = 1.dp,
                     color = if (selected) Color.Green else Color.Transparent,
@@ -140,3 +142,19 @@ fun AnimalCard(
 //fun AnimalCardPreview() {
 //    AnimalCard(R.drawable.doggo, false)
 //}
+
+@Composable
+fun ButtonComponent(
+    gotToDetailsScreen : () -> Unit
+) {
+    Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { /*TODO*/ }
+    ) {
+        TextComponent(
+            textValue = "Go to Details Screen",
+            testSize = 18.sp,
+            colorValue = Color.White
+        )
+    }
+}
